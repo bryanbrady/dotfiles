@@ -16,7 +16,7 @@ Plug 'tpope/vim-commentary'
 "Plug 'tpope/vim-repeat'
 "Plug 'tpope/vim-speeddating'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'vim-scripts/taglist.vim'
+"Plug 'vim-scripts/taglist.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'moll/vim-bbye'
