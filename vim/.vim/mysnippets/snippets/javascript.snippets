@@ -1,0 +1,59 @@
+# Jasmine
+snippet jas
+	var filename = "`vim_snippets#Filename()`";
+	describe(filename, function() {
+		c3Import('structure', 'testtool');
+
+		var ctx = TestApi.createContext(filename);
+		
+		${1}
+
+		it('setup', function() {
+
+		});
+
+		it('teardown', function() {
+
+		});
+	});
+
+snippet itg
+	it("${1:}", jasmine.setupGuard(ctx, function (){
+		${2}
+	}));
+
+snippet it
+	it("${1:}", function (){
+		${2}
+	});
+
+snippet des
+	describe("${1:}", function () {
+		${2}
+	});
+
+snippet wait
+	TestApi.waitForSetup(${1:ctx}, ${2:null}, ${3:1000}, ${4:30000});
+
+snippet waitj
+	TestApi.waitForJob(${1:ctx}, ${2:tr}, ${3:job}, ${4:1000}, ${5:30000});
+
+snippet config
+	var ${1:config} = {
+		sourceSystem : ${2:"MDM"},
+		resource     : ${3:"Electricity"},
+		measure      : ${4:"Consumption"},
+		unit         : ${5:"kilowatt_hour"},
+		treatment    : ${6:"Integral"},
+		metricName   : ${7},
+		dates        : ${8},
+		values       : ${9},
+		grain        : ${10:"DAY"},
+		fillSeries   : true
+	};
+
+snippet doc
+	/**
+	 * ${1}
+	 */
+

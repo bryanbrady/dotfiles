@@ -1,0 +1,23 @@
+# Debug
+debug_msg () {
+  if [ -f ${HOME}/.bash_debug ]; then
+    echo `whoami`": $1"
+  fi
+}
+debug_msg "entering .bash_include"
+
+# Helpers
+exists () {
+  type -t $1 > /dev/null 2>&1
+}
+
+# Detect OS
+case `uname` in
+  "Darwin") BB_OS='mac'     ;;
+  "Linux")  BB_OS='linux'   ;;
+  *)        BB_OS='unknown' ;;
+esac
+export BB_OS
+
+debug_msg "leaving .bash_include"
+# vim: set filetype=sh:

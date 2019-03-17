@@ -1,0 +1,27 @@
+set editing-mode emacs
+set bind-tty-special-chars off
+"\C-w": kill-region
+
+"\e[1;6D": backward-word   # Control-Shift-Left
+"\e[1;5D": backward-word   # Control-Left
+"\e[1;2D": backward-word   # Shift-Left
+"\e[1;6C": forward-word    # Control-Shift-Right
+"\e[1;5C": forward-word    # Control-Right
+"\e[1;2C": forward-word    # Shift-Right
+
+"\C-p": history-search-backward
+"\C-n": history-search-forward
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\C-l": clear-screen
+
+# fzf
+# Ctrl-f triggers Ctrl-t
+"\C-f": "fzf\C-m"
+
+# Ctrl-j triggers fzf_cd
+"\C-j": "\C-e\ec"
+
+# Ctrl-g
+"\C-g": "open -a MacVim $(fzf)\C-m"
+# vim: set filetype=sh:

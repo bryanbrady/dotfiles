@@ -1,0 +1,28 @@
+[user]
+	name = Bryan Brady
+	email = bryan.brady@gmail.com
+[core]
+	autocrlf = input
+	excludesfile = ${HOME}/.gitignore_global
+	editor = vim
+[push]
+	default = tracking
+[alias]
+  st = status
+  br = branch
+  co = checkout
+  rmt = remote -v
+  subup = submodule update --recursive
+  lp = log -p
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  mstat = diff --stat master
+  mname = diff --name-status master
+  mdiff = diff master
+  ctrb = "!_ctrb() { git checkout --track -b $1 origin/$1; }; _ctrb"
+  sl = stash list
+  ss = "!_ss() { git stash show -p stash@{$1}; }; _ss"
+  mcp = "!_mcp() { OLDBR=$(git rev-parse --abbrev-ref HEAD); git checkout master; git pull; git checkout $OLDBR; }; _mcp"
+  exclude = "!sh -c 'echo \"$1\" >> .git/info/exclude' -"
+  astats = shortlog -sn
+[color]
+	ui = true

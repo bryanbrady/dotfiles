@@ -1,0 +1,35 @@
+### Debug ###
+if [ -f $HOME/.bash_include ]; then
+  . $HOME/.bash_include
+fi
+
+debug_msg "entering .bash_completion"
+
+# Make 'fd'complete on directories
+complete -d fd
+
+# Make my "command `which $1`" combos complete with commands
+complete -c command ew cw vw mw gw llw which
+
+# for alias xrpm
+complete -o default -f -X '!*.[rs]pm' xrpm
+
+# pdf
+complete -o default -f -X '!*.pdf' pdf
+
+# ssh
+_ssh()
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=$(grep '^Host' ~/.ssh/config | grep -v '[?*]' | cut -d ' ' -f 2-)
+
+    COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
+    return 0
+}
+complete -F _ssh ssh
+
+
+debug_msg "leaving .bash_completion"

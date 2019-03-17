@@ -1,0 +1,168 @@
+debug_msg "entering .bash_alias"
+
+################################################################################
+# Aliases                                                                      #
+################################################################################
+
+alias ls="ls -p $BB_LS_COLOR"
+alias sl="ls -p $BB_LS_COLOR"
+alias l="ls -lhp  $BB_LS_COLOR"
+alias ll="ls -lhp  $BB_LS_COLOR"
+alias la="ls -Ahp  $BB_LS_COLOR"
+alias lla="ls -alhp  $BB_LS_COLOR"
+alias ltr="ls -ltrh  $BB_LS_COLOR"
+alias ltra="ls -ltrha  $BB_LS_COLOR"
+alias lsr="ls -lSrh  $BB_LS_COLOR"
+alias lr="ls -lR $BB_LS_COLOR"
+
+alias m="less -ifR"
+alias more="less -ifR"
+alias mroe="less -ifR"
+alias less="less -ifR"
+
+alias path='echo -e ${PATH//:/\\n}'
+alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+alias manpath='echo -e ${MANPATH//:/\\n}'
+alias ..='pushd ..'
+alias ...='pushd ../..'
+alias ....='pushd ../../..'
+alias .4='pushd ../../../..'
+alias mkae='make'
+alias maek='make'
+alias amke='make'
+alias mkea='make'
+alias makeless='make 2>&1 | less -ifR'
+alias eamcs='emacs'
+alias emcas='emacs'
+alias xterm='xterm -bg black -fg white'
+
+alias g="ag"
+alias h='history | ag'
+alias hist="history"
+alias ihstory='history'
+alias usbdev='find /dev -name "*usb*" 2> /dev/null'
+alias ttydev='find /dev -name "*tty*" 2> /dev/null'
+
+alias ppwd='pwd -P'
+if [[ $BB_OS == 'mac' ]]; then
+  alias du1='du -ch -d 1'
+  alias du2='du -ch -d 2'
+else
+  alias du1='du -ch --max-depth 1'
+  alias du2='du -ch --max-depth 2'
+  alias i='sudo apt-get install'
+  alias s='apt-cache search'
+fi
+alias df='df -H'
+alias mkdir="mkdir -p"
+
+alias datefmt='date +%Y.%m.%d.%Hh%Mm%Ss'
+alias killeofnewline="perl -pe 'chomp if eof'"
+
+alias al='alias | ag'
+alias psme="ps -u $USER"
+alias topme="top -U$USER"
+alias htop="settitle htop; htop"
+
+alias ffg="find . -type f -print0 | xargs -0 ag"
+alias ffl="find -L . -type f -print0 | xargs -0 ag"
+
+# iTerm
+alias ireset="printf '\e]50;ClearScrollback\a'"
+
+
+################################################################################
+# Git                                                                          #
+################################################################################
+alias gb='git branch'
+alias gba='git branch -a'
+alias gc='git checkout'
+alias gcm='git checkout master'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gdsw='git diff --staged --word-diff'
+alias gdw='git diff --word-diff'
+alias gvd='git difftool --tool=gvimdiff -y'
+alias gl='git lg'
+alias gp='git pull'
+alias gs='git status -sb'
+alias gsf='git status'
+alias gmcp='git mcp'
+alias gmd='git diff master'
+alias gmdw='git diff master --word-diff'
+alias gmn='git diff --name-status master'
+alias gms='git diff --stat master'
+alias grmt='git remote -v'
+alias gsp='git stash pop'
+alias gss='git ss'
+alias gsl='git sl'
+alias lintdiff="git diff --name-only | grep '\.js$'|xargs jshint"
+# Auto-complete git aliases
+if exists __git_complete; then
+  __git_complete gb   _git_branch
+  __git_complete gba  _git_branch
+  __git_complete gc   _git_checkout
+  __git_complete gcm  _git_checkout
+  __git_complete gd   _git_diff
+  __git_complete gds  _git_diff
+  __git_complete gdw  _git_diff
+  __git_complete gdsw _git_diff
+  __git_complete gl   _git_log
+  __git_complete glbb _git_log
+  __git_complete gp   _git_pull
+  __git_complete gmd  _git_diff
+  __git_complete gmdw _git_diff
+  __git_complete gmn  _git_diff
+  __git_complete gms  _git_diff
+  __git_complete grmt _git_remote
+  __git_complete gsp  _git_stash
+  __git_complete gss  _git_stash
+  __git_complete gsl  _git_stash
+  __git_complete gu   _git_reset
+fi
+
+# Mac only
+if [[ $BB_OS == 'mac' ]]; then
+    alias finderShowHidden='defaults write com.apple.finder ShowAllFiles TRUE'
+    alias finderHideHidden='defaults write com.apple.finder ShowAllFiles FALSE'
+    alias gvimdiff='mvim -d'
+    alias dl='diskutil list'
+    alias unmount='diskutil unmountDisk'
+    alias eject='diskutil eject'
+    alias getappid="/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier'"
+    alias lockscreen="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+    alias ss="open -a ScreenSaverEngine.app"
+
+fi
+# defaults write -g NSNavPanelExpandedStateForSaveMode -bool YES
+
+# Node
+#alias node="env NODE_NO_READLINE=1 rlwrap node"
+
+################################################################################
+# Other                                                                        #
+################################################################################
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias openPorts='sudo lsof -i | grep LISTEN'
+
+################################################################################
+# Hash / password related                                                      #
+################################################################################
+alias mkpasswd='python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.encrypt(getpass.getpass())"'
+
+################################################################################
+# Cool Aliases that I'll probably never use                                    #
+################################################################################
+alias ports='netstat -tulanp'
+alias netCons='lsof -i'
+alias flushDNS='dscacheutil -flushcache'
+alias lsock='sudo /usr/sbin/lsof -i -P'
+alias lsockU='sudo /usr/sbin/lsof -nP | grep UDP'
+alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'
+alias ipInfo0='ipconfig getpacket en0'
+alias ipInfo1='ipconfig getpacket en1'
+alias showBlocked='sudo ipfw list'
+
+debug_msg "leaving .bash_alias"
+
+# vim: set filetype=sh: 
