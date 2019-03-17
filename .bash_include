@@ -19,5 +19,11 @@ case `uname` in
 esac
 export BB_OS
 
+case ${BB_OS} in
+  'mac')   BB_LS_COLOR='-G'          ;;
+  'linux') BB_LS_COLOR='--color=tty' ;;
+esac
+export BB_LS_COLOR
+
 debug_msg "leaving .bash_include"
 # vim: set filetype=sh:

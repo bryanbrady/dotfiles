@@ -5,12 +5,6 @@ if [ -f $HOME/.bash_include ]; then
   . $HOME/.bash_include
 fi
 
-case ${BB_OS} in
-  'mac')   BB_LS_COLOR='-G'          ;;
-  'linux') BB_LS_COLOR='--color=tty' ;;
-esac
-export BB_LS_COLOR
-
 if [ -f $HOME/.bashrc ]; then
   . $HOME/.bashrc
 fi
