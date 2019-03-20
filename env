@@ -1,0 +1,620 @@
+# Debug
+debug_msg () {
+  if [ -f ${HOME}/.bash_debug ]; then
+    echo `whoami`": $1"
+  fi
+}
+debug_msg "entering .bash_include"
+
+# Helpers
+exists () {
+  type -t $1 > /dev/null 2>&1
+}
+
+# Detect OS
+case `uname` in
+  "Darwin") BB_OS='mac'     ;;
+  "Linux")  BB_OS='linux'   ;;
+  *)        BB_OS='unknown' ;;
+esac
+export BB_OS
+
+case ${BB_OS} in
+  'mac')   BB_LS_COLOR='-G'          ;;
+  'linux') BB_LS_COLOR='--color=tty' ;;
+esac
+export BB_LS_COLOR
+
+debug_msg "leaving .bash_include"
+# vim: set filetype=sh:
+debug_msg "entering .bashrc_colors"
+
+# Reset
+Clear='\[\033[0m\]'           # Text Reset
+
+# Regular Colors
+Black='\[\033[0;30m\]'        # Black
+Red='\[\033[0;31m\]'          # Red
+Green='\[\033[0;32m\]'        # Green
+Yellow='\[\033[0;33m\]'       # Yellow
+Blue='\[\033[0;34m\]'         # Blue
+Purple='\[\033[0;35m\]'       # Purple
+Cyan='\[\033[0;36m\]'         # Cyan
+White='\[\033[0;37m\]'        # White
+
+# Bold
+BBlack='\[\033[1;30m\]'       # Black
+BRed='\[\033[1;31m\]'         # Red
+BGreen='\[\033[1;32m\]'       # Green
+BYellow='\[\033[1;33m\]'      # Yellow
+BBlue='\[\033[1;34m\]'        # Blue
+BPurple='\[\033[1;35m\]'      # Purple
+BCyan='\[\033[1;36m\]'        # Cyan
+BWhite='\[\033[1;37m\]'       # White
+
+# Underline
+UBlack='\[\033[4;30m\]'       # Black
+URed='\[\033[4;31m\]'         # Red
+UGreen='\[\033[4;32m\]'       # Green
+UYellow='\[\033[4;33m\]'      # Yellow
+UBlue='\[\033[4;34m\]'        # Blue
+UPurple='\[\033[4;35m\]'      # Purple
+UCyan='\[\033[4;36m\]'        # Cyan
+UWhite='\[\033[4;37m\]'       # White
+
+# Background
+On_Black='\[\033[40m\]'       # Black
+On_Red='\[\033[41m\]'         # Red
+On_Green='\[\033[42m\]'       # Green
+On_Yellow='\[\033[43m\]'      # Yellow
+On_Blue='\[\033[44m\]'        # Blue
+On_Purple='\[\033[45m\]'      # Purple
+On_Cyan='\[\033[46m\]'        # Cyan
+On_White='\[\033[47m\]'       # White
+
+# High Intensity
+IBlack='\[\033[0;90m\]'       # Black
+IRed='\[\033[0;91m\]'         # Red
+IGreen='\[\033[0;92m\]'       # Green
+IYellow='\[\033[0;93m\]'      # Yellow
+IBlue='\[\033[0;94m\]'        # Blue
+IPurple='\[\033[0;95m\]'      # Purple
+ICyan='\[\033[0;96m\]'        # Cyan
+IWhite='\[\033[0;97m\]'       # White
+
+# Bold High Intensity
+BIBlack='\[\033[1;90m\]'      # Black
+BIRed='\[\033[1;91m\]'        # Red
+BIGreen='\[\033[1;92m\]'      # Green
+BIYellow='\[\033[1;93m\]'     # Yellow
+BIBlue='\[\033[1;94m\]'       # Blue
+BIPurple='\[\033[1;95m\]'     # Purple
+BICyan='\[\033[1;96m\]'       # Cyan
+BIWhite='\[\033[1;97m\]'      # White
+
+# High Intensity backgrounds
+On_IBlack='\[\033[0;100m\]'   # Black
+On_IRed='\[\033[0;101m\]'     # Red
+On_IGreen='\[\033[0;102m\]'   # Green
+On_IYellow='\[\033[0;103m\]'  # Yellow
+On_IBlue='\[\033[0;104m\]'    # Blue
+On_IPurple='\[\033[0;105m\]'  # Purple
+On_ICyan='\[\033[0;106m\]'    # Cyan
+On_IWhite='\[\033[0;107m\]'   # White
+
+debug_msg "leaving .bashrc_colors"
+
+## Reset
+#Clear='\033[0m'           # Text Reset
+#
+## Regular Colors
+#Black='\033[0;30m'        # Black
+#Red='\033[0;31m'          # Red
+#Green='\033[0;32m'        # Green
+#Yellow='\033[0;33m'       # Yellow
+#Blue='\033[0;34m'         # Blue
+#Purple='\033[0;35m'       # Purple
+#Cyan='\033[0;36m'         # Cyan
+#White='\033[0;37m'        # White
+#
+## Bold
+#BBlack='\033[1;30m'       # Black
+#BRed='\033[1;31m'         # Red
+#BGreen='\033[1;32m'       # Green
+#BYellow='\033[1;33m'      # Yellow
+#BBlue='\033[1;34m'        # Blue
+#BPurple='\033[1;35m'      # Purple
+#BCyan='\033[1;36m'        # Cyan
+#BWhite='\033[1;37m'       # White
+#
+## Underline
+#UBlack='\033[4;30m'       # Black
+#URed='\033[4;31m'         # Red
+#UGreen='\033[4;32m'       # Green
+#UYellow='\033[4;33m'      # Yellow
+#UBlue='\033[4;34m'        # Blue
+#UPurple='\033[4;35m'      # Purple
+#UCyan='\033[4;36m'        # Cyan
+#UWhite='\033[4;37m'       # White
+#
+## Background
+#On_Black='\033[40m'       # Black
+#On_Red='\033[41m'         # Red
+#On_Green='\033[42m'       # Green
+#On_Yellow='\033[43m'      # Yellow
+#On_Blue='\033[44m'        # Blue
+#On_Purple='\033[45m'      # Purple
+#On_Cyan='\033[46m'        # Cyan
+#On_White='\033[47m'       # White
+#
+## High Intensity
+#IBlack='\033[0;90m'       # Black
+#IRed='\033[0;91m'         # Red
+#IGreen='\033[0;92m'       # Green
+#IYellow='\033[0;93m'      # Yellow
+#IBlue='\033[0;94m'        # Blue
+#IPurple='\033[0;95m'      # Purple
+#ICyan='\033[0;96m'        # Cyan
+#IWhite='\033[0;97m'       # White
+#
+## Bold High Intensity
+#BIBlack='\033[1;90m'      # Black
+#BIRed='\033[1;91m'        # Red
+#BIGreen='\033[1;92m'      # Green
+#BIYellow='\033[1;93m'     # Yellow
+#BIBlue='\033[1;94m'       # Blue
+#BIPurple='\033[1;95m'     # Purple
+#BICyan='\033[1;96m'       # Cyan
+#BIWhite='\033[1;97m'      # White
+#
+## High Intensity backgrounds
+#On_IBlack='\033[0;100m'   # Black
+#On_IRed='\033[0;101m'     # Red
+#On_IGreen='\033[0;102m'   # Green
+#On_IYellow='\033[0;103m'  # Yellow
+#On_IBlue='\033[0;104m'    # Blue
+#On_IPurple='\033[0;105m'  # Purple
+#On_ICyan='\033[0;106m'    # Cyan
+#On_IWhite='\033[0;107m'   # White
+
+# vim: set filetype=sh:
+debug_msg "entering .bash_dircolors"
+
+export CLICOLOR=YES
+export CLICOLOR_FORCE=1
+case $BB_OS in
+  'mac')   LS_COLORS="GxFxcxdxCxegedabagacad" ;;
+  'linux') LS_COLORS='rs=0:di=01;36:ln=01;32:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:' ;;
+  *) ;;
+esac
+export LS_COLORS
+
+debug_msg "leaving .bash_dircolors"
+# vim: filetype=sh
+debug_msg "entering .bash_alias"
+
+################################################################################
+# Aliases                                                                      #
+################################################################################
+
+alias ls="ls -p $BB_LS_COLOR"
+alias sl="ls -p $BB_LS_COLOR"
+alias l="ls -lhp  $BB_LS_COLOR"
+alias ll="ls -lhp  $BB_LS_COLOR"
+alias la="ls -Ahp  $BB_LS_COLOR"
+alias lla="ls -alhp  $BB_LS_COLOR"
+alias ltr="ls -ltrh  $BB_LS_COLOR"
+alias ltra="ls -ltrha  $BB_LS_COLOR"
+alias lsr="ls -lSrh  $BB_LS_COLOR"
+alias lr="ls -lR $BB_LS_COLOR"
+
+alias m="less -ifR"
+alias more="less -ifR"
+alias mroe="less -ifR"
+alias less="less -ifR"
+
+alias path='echo -e ${PATH//:/\\n}'
+alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+alias manpath='echo -e ${MANPATH//:/\\n}'
+alias ..='pushd ..'
+alias ...='pushd ../..'
+alias ....='pushd ../../..'
+alias .4='pushd ../../../..'
+alias mkae='make'
+alias maek='make'
+alias amke='make'
+alias mkea='make'
+alias makeless='make 2>&1 | less -ifR'
+alias eamcs='emacs'
+alias emcas='emacs'
+alias xterm='xterm -bg black -fg white'
+
+alias g="ag"
+alias h='history | ag'
+alias hist="history"
+alias ihstory='history'
+alias usbdev='find /dev -name "*usb*" 2> /dev/null'
+alias ttydev='find /dev -name "*tty*" 2> /dev/null'
+
+alias ppwd='pwd -P'
+if [[ $BB_OS == 'mac' ]]; then
+  alias du1='du -ch -d 1'
+  alias du2='du -ch -d 2'
+else
+  alias du1='du -ch --max-depth 1'
+  alias du2='du -ch --max-depth 2'
+  alias i='sudo apt-get install'
+  alias s='apt-cache search'
+fi
+alias df='df -H'
+alias mkdir="mkdir -p"
+
+alias datefmt='date +%Y.%m.%d.%Hh%Mm%Ss'
+alias killeofnewline="perl -pe 'chomp if eof'"
+
+alias al='alias | ag'
+alias psme="ps -u $USER"
+alias topme="top -U$USER"
+alias htop="settitle htop; htop"
+
+alias ffg="find . -type f -print0 | xargs -0 ag"
+alias ffl="find -L . -type f -print0 | xargs -0 ag"
+
+# iTerm
+alias ireset="printf '\e]50;ClearScrollback\a'"
+
+
+################################################################################
+# Git                                                                          #
+################################################################################
+alias gb='git branch'
+alias gba='git branch -a'
+alias gc='git checkout'
+alias gcm='git checkout master'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gdsw='git diff --staged --word-diff'
+alias gdw='git diff --word-diff'
+alias gvd='git difftool --tool=gvimdiff -y'
+alias gl='git lg'
+alias gp='git pull'
+alias gs='git status -sb'
+alias gsf='git status'
+alias gmcp='git mcp'
+alias gmd='git diff master'
+alias gmdw='git diff master --word-diff'
+alias gmn='git diff --name-status master'
+alias gms='git diff --stat master'
+alias grmt='git remote -v'
+alias gsp='git stash pop'
+alias gss='git ss'
+alias gsl='git sl'
+alias lintdiff="git diff --name-only | grep '\.js$'|xargs jshint"
+# Auto-complete git aliases
+if exists __git_complete; then
+  __git_complete gb   _git_branch
+  __git_complete gba  _git_branch
+  __git_complete gc   _git_checkout
+  __git_complete gcm  _git_checkout
+  __git_complete gd   _git_diff
+  __git_complete gds  _git_diff
+  __git_complete gdw  _git_diff
+  __git_complete gdsw _git_diff
+  __git_complete gl   _git_log
+  __git_complete glbb _git_log
+  __git_complete gp   _git_pull
+  __git_complete gmd  _git_diff
+  __git_complete gmdw _git_diff
+  __git_complete gmn  _git_diff
+  __git_complete gms  _git_diff
+  __git_complete grmt _git_remote
+  __git_complete gsp  _git_stash
+  __git_complete gss  _git_stash
+  __git_complete gsl  _git_stash
+  __git_complete gu   _git_reset
+fi
+
+# Mac only
+if [[ $BB_OS == 'mac' ]]; then
+    alias finderShowHidden='defaults write com.apple.finder ShowAllFiles TRUE'
+    alias finderHideHidden='defaults write com.apple.finder ShowAllFiles FALSE'
+    alias gvimdiff='mvim -d'
+    alias dl='diskutil list'
+    alias unmount='diskutil unmountDisk'
+    alias eject='diskutil eject'
+    alias getappid="/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier'"
+    alias lockscreen="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+    alias ss="open -a ScreenSaverEngine.app"
+
+fi
+# defaults write -g NSNavPanelExpandedStateForSaveMode -bool YES
+
+# Node
+#alias node="env NODE_NO_READLINE=1 rlwrap node"
+
+################################################################################
+# Other                                                                        #
+################################################################################
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias openPorts='sudo lsof -i | grep LISTEN'
+
+################################################################################
+# Hash / password related                                                      #
+################################################################################
+alias mkpasswd='python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.encrypt(getpass.getpass())"'
+
+################################################################################
+# Cool Aliases that I'll probably never use                                    #
+################################################################################
+alias ports='netstat -tulanp'
+alias netCons='lsof -i'
+alias flushDNS='dscacheutil -flushcache'
+alias lsock='sudo /usr/sbin/lsof -i -P'
+alias lsockU='sudo /usr/sbin/lsof -nP | grep UDP'
+alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'
+alias ipInfo0='ipconfig getpacket en0'
+alias ipInfo1='ipconfig getpacket en1'
+alias showBlocked='sudo ipfw list'
+
+debug_msg "leaving .bash_alias"
+
+# vim: set filetype=sh: 
+debug_msg "entering .bash_functions"
+
+################################################################################
+# Find                                                                         #
+################################################################################
+ff  () { find . -type f -name "$@" ;}
+fd  () { find . -type d -name "$@" ;}
+fff () { find . -type f ;}
+ffd () { find . -type d -name '*'"$@"'*';}
+ffa () { find . -name '*'"$@"'*' ;}
+ffs () { find . -name "$@"'*' ;}
+ffe () { find . -name '*'"$@" ;}
+gga () { gvim `ffa $1`;}
+
+# Grep/Kill my processes
+psg () { ps aux | grep -i $1 | grep -v grep ;}
+greps () { ps aux | grep -i $1 | grep -v grep ;}
+killps () { ps aux | grep $1 | grep -v grep | awk '{print $2}' | xargs kill -9 ;}
+
+# Combine tee with custom date stamp for unique names
+teed () { tee $1.`date +%Y.%m.%d.%Hh%Mm%Ss`.log ;}
+
+# ll | less
+lm () { ls -lhp $BB_LS_COLOR $1 | less -ifR ;}
+
+# ll -R | less
+lmr () { ls -lhpR $BB_LS_COLOR $1 | less -ifR ;}
+
+# cd -P if no argument,  cd -P .
+cdp () { cd -P ${1:-.} ; }
+
+# Copy with progress
+cp_progress () { rsync -WavP --human-readable --progress $1 $2; }
+
+## Print a horizontal rule
+rule () { printf "%$(tput cols)s\n"|tr " " "─"; }
+
+################################################################################
+# Which                                                                        #
+################################################################################
+mw () { less -ifR `which $1` ;}              # More/less + which
+vw () { vim `which $1` ;}                    # vim + which
+gw () { gvim `which $1` ;}                   # gvim + which
+cw () { cat `which $1` ;}                    # cat + which
+llw () { ls -lhp $BB_LS_COLOR `which $1` ;}  # ls -lhp + which
+pud () { pushd `dirname $1` ;}               # pu to dirname output
+
+################################################################################
+# Search                                                                       #
+################################################################################
+if exists ag; then
+  any     () { ag --nopager "$@" ;}
+  anyc    () { ag --nopager --cc --cpp "$@" ;}
+  anyh    () { ag --nopager --hh "$@" ;}
+  anyhs   () { ag --nopager --haskell "$@" ;}
+  anynix  () { ag --nopager --nix "$@" ;}
+  anypy   () { ag --nopager --python "$@" ;}
+  anyyaml () { ag --nopager --yaml "$@" ;}
+  json    () { ag --nopager --json "$@" ;}
+  js      () { ag --nopager --js "$@" ;}
+  jv      () { ag --nopager --java "$@" ;}
+elif exists ack; then
+  any     () { ack --nopager "$@" ;}
+  anyc    () { ack --nopager --cc --cpp "$@" ;}
+  anyh    () { ack --nopager --hh "$@" ;}
+  anyhs   () { ack --nopager --haskell "$@" ;}
+  anynix  () { ack --nopager --nix "$@" ;}
+  anypy   () { ack --nopager --python "$@" ;}
+  anyyaml () { ack --nopager --yaml "$@" ;}
+  json    () { ack --nopager --json "$@" ;}
+  js      () { ack --nopager --js "$@" ;}
+  jv      () { ack --nopager --java "$@" ;}
+else
+  any     () { find . -type f -name '*' -print0 | xargs -0 grep "$@" ;}
+  anyc    () { find . -type f -name '*.cpp' -or '*.cc' -or '*.cxx' -or '*.m' -or '*.hpp' -or '*hh' -or '*.h' -or '*.hxx' '*.xs' -print0 | xargs -0 grep  "$@" ;}
+  anyh    () { find . -type f -name '*.h' -print0 | xargs -0 grep  "$@" ;}
+  anynix  () { find . -type f -name '*.nix' -print0 | xargs -0 grep  "$@" ;}
+  anypy   () { find . -type f -name '*.py' -print0 | xargs -0 grep  "$@" ;}
+  anyyaml () { find . -type f -name '*.yaml' -print0 | xargs -0 grep  "$@" ;}
+  json    () { find . -type f -name '*.json' -print0 | xargs -0 grep -H "$@" ;}
+  js      () { find . -type f -name '*.js' -print0 | xargs -0 grep -H "$@" ;}
+fi
+
+# Take a list of files (i.e., output of find) and jump
+# to the nth one. Single argument, n.
+#goto()
+#{
+#  read IN;
+#  DIR=`$IN >> sed "$1q;d"`;
+#  echo $DIR;
+#}
+
+# pushd
+pu ()
+{
+  pushd $1 > /dev/null
+}
+
+# popd
+po ()
+{
+  popd > /dev/null
+}
+
+# dirs -v alternate
+d ()
+{
+  numdirs=${#DIRSTACK[@]}
+  echo "+n" "-n" "<dir>"
+  for (( i=0; i<$numdirs; i++))
+  do
+    echo "+"$i " -"$(($numdirs-$i-1)) ${DIRSTACK[$i]}
+  done
+}
+
+# set title to first argument, if null, use $PWD
+settitle ()
+{
+    echo -ne "\033];${1:-${PWD}}\007"
+}
+
+pdf ()
+{
+    if [[ $BB_OS == 'mac' ]]; then
+        open -a Preview $@
+    else
+        echo "Not implemented"
+    fi
+}
+
+gvim ()
+{
+    if [[ $BB_OS == 'mac' ]]; then
+        open -a MacVim "$@"
+    else
+        /usr/bin/gvim $@
+    fi
+}
+alias gv='gvim'
+
+v ()
+{
+    # Function not really necessary, but the rest of the stuff is here
+    vim $@
+}
+
+e ()
+{
+    if [[ $BB_OS == 'mac' ]]; then
+        open -a emacs $@
+    else
+        emacs $@ &
+    fi
+}
+
+f ()
+{
+    if [[ $BB_OS == 'mac' ]]; then
+        D=${1:-.}
+        shift
+        open -a Finder $D $@
+    else
+        echo "Not implemented. Fix this"
+    fi
+
+}
+
+xrpm ()
+{
+  rpm2cpio.pl $1 | cpio -idmv
+}
+
+_octave ()
+{
+  \octave --eval "cd('${PWD}')" --persist
+}
+alias octave=_octave
+
+unrpm ()
+{
+  rpm2cpio.pl $1 | cpio -idmv
+}
+
+gitshown ()
+{
+  FILE=$1
+  N=${2:-1}
+  git show $(git log -$N --oneline $FILE | tail -n 1 | cut -d ' ' -f 1) $FILE
+}
+
+github () {
+  REPO=$(git rev-parse --show-toplevel)
+  BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  URL=$(git ls-remote --get-url origin | sed -e 's,[^@]*@\([^/]*\).*,\1,' | sed -e 's,:,/,')
+  echo https://$URL/${REPO##*/}/tree/$BRANCH
+  open https://$URL/${REPO##*/}/tree/$BRANCH
+}
+
+git_all_files_ever () {
+  git log --pretty=format: --name-only | sort -u
+}
+
+zero_out_whitespace () {
+  sudo dd if=/dev/zero of=/WHITESPACE bs=1024 count=$(df --sync -kP / | awk 'END {print $4 - 1}')
+  sudo rm -f /WHITESPACE
+}
+
+monitor_file_size () {
+  while true; do ls -alh $1; sleep 15; done
+}
+
+
+extract () {
+ if [ -z "$1" ]; then
+    # display usage if no parameters given
+    echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+    echo "       extract <path/file_name_1.ext> [path/file_name_2.ext] [path/file_name_3.ext]"
+    return 1
+ else
+    for n in $@
+    do
+      if [ -f "$n" ] ; then
+          case "${n%,}" in
+            *.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
+                         tar xvf "$n"       ;;
+            *.lzma)      unlzma ./"$n"      ;;
+            *.bz2)       bunzip2 ./"$n"     ;;
+            *.rar)       unrar x -ad ./"$n" ;;
+            *.gz)        gunzip ./"$n"      ;;
+            *.zip)       unzip ./"$n"       ;;
+            *.z)         uncompress ./"$n"  ;;
+            *.7z|*.arj|*.cab|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.rpm|*.udf|*.wim|*.xar)
+                         7z x ./"$n"        ;;
+            *.xz)        unxz ./"$n"        ;;
+            *.exe)       cabextract ./"$n"  ;;
+            *)
+                         echo "extract: '$n' - unknown archive method"
+                         return 1
+                         ;;
+          esac
+      else
+          echo "'$n' - file does not exist"
+          return 1
+      fi
+    done
+fi
+}
+
+start_tftp_server () {
+  sudo launchctl load -F /System/Library/LaunchDaemons/tftp.plist
+  sudo launchctl start com.apple.tftpd
+}
+
+stop_tftp_server () {
+  sudo launchctl unload -F /System/Library/LaunchDaemons/tftp.plist
+}
+
+debug_msg "leaving .bash_functions"
+# vim: set filetype=sh:
