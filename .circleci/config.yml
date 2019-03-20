@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ubuntu:bionic
+
+    steps:
+      - checkout
+      - run:
+          name:
+          command: |
+            ./gen.sh > env
+            git clone git@github.com:bryanbrady/asdf-sh.git
+            cd asdf-sh
+            mv ../env .
+            git add env
+            git commit -m 'automatic update from dotfiles'
+            git push origin master
+
