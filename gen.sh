@@ -1,7 +1,11 @@
+
+echo "go () {"
 cat \
   .bash_include \
   .bash_colors \
   .bash_dircolors \
   .bash_alias \
-  .bash_functions \
+  .bash_functions
+echo "}"
+echo go
 
