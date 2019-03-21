@@ -125,7 +125,7 @@ fi
 # Docker                                                                       #
 ################################################################################
 alias di='docker images'
-alias dps='docker ps'
+alias dps='docker ps -a'
 
 # Mac only
 if [[ $BB_OS == 'mac' ]]; then
