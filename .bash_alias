@@ -6,13 +6,13 @@ debug_msg "entering .bash_alias"
 
 alias ls="ls -p $BB_LS_COLOR"
 alias sl="ls -p $BB_LS_COLOR"
-alias l="ls -lhp  $BB_LS_COLOR"
-alias ll="ls -lhp  $BB_LS_COLOR"
-alias la="ls -Ahp  $BB_LS_COLOR"
-alias lla="ls -alhp  $BB_LS_COLOR"
-alias ltr="ls -ltrh  $BB_LS_COLOR"
-alias ltra="ls -ltrha  $BB_LS_COLOR"
-alias lsr="ls -lSrh  $BB_LS_COLOR"
+alias l="ls -lhp $BB_LS_COLOR"
+alias ll="ls -lhp $BB_LS_COLOR"
+alias la="ls -Ahp $BB_LS_COLOR"
+alias lla="ls -alhp $BB_LS_COLOR"
+alias ltr="ls -ltrh $BB_LS_COLOR"
+alias ltra="ls -ltrha $BB_LS_COLOR"
+alias lsr="ls -lSrh $BB_LS_COLOR"
 alias lr="ls -lR $BB_LS_COLOR"
 
 alias m="less -ifR"
@@ -120,6 +120,12 @@ if exists __git_complete; then
   __git_complete gsl  _git_stash
   __git_complete gu   _git_reset
 fi
+
+################################################################################
+# Docker                                                                       #
+################################################################################
+alias di='docker images'
+alias dps='docker ps'
 
 # Mac only
 if [[ $BB_OS == 'mac' ]]; then
