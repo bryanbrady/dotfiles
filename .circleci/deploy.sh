@@ -9,6 +9,6 @@ cd asdf-sh
 cp /tmp/env .
 if ! git diff --exit-code; then
   git add -u
-  git commit -m "update env for $sha"
+  git commit -m "https://github.com/bryanbrady/dotfiles/commit/$sha"
   git push origin master
 fi
