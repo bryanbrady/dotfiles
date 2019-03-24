@@ -5,5 +5,5 @@
 
 ## Docker
 Sandbox for experimenting with dotfiles
-`docker run --rm -it brady/dotfiles`
+`docker run --rm -it bbrady/dotfiles`
 
