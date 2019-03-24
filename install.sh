@@ -7,7 +7,7 @@ echo "THIS_DIR: $THIS_DIR"
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
 BACKUPDIR=${HOME}/.dotfiles.backup.d/${TIMESTAMP}
 
-DOTFILES=$(find ${THIS_DIR}  -maxdepth 1 -type f ! -name .gitignore -name '.*')
+DOTFILES=$(find ${THIS_DIR}/dot  -maxdepth 1 -type f -name '.*')
 VIMFILES=$(find ${THIS_DIR}/vim  -maxdepth 1 -name '.*')
 ALLFILES=( "${DOTFILES[@]} ${VIMFILES[@]}" )
 
