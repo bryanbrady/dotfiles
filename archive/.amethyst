@@ -1,0 +1,92 @@
+{
+
+  "layouts": [
+    "fullscreen",
+    "tall",
+    "wide",
+    "row",
+    "floating"
+  ],
+
+  "mod1": [
+    "control",
+    "option",
+    "command"
+  ],
+
+  "mod2": [
+    "control",
+    "option",
+    "command",
+    "shift"
+  ],
+
+  "swap-main": {
+    "mod": "mod1",
+    "key": "enter"
+  },
+
+  "increase-main": {
+    "mod": "mod1",
+    "key":"."
+  },
+
+  "decrease-main": {
+    "mod": "mod1",
+    "key":","
+  },
+
+  "select-fullscreen-layout": {
+    "mod": "mod2",
+    "key": "enter"
+  },
+
+  "select-tall-layout": {
+    "mod": "mod1",
+    "key": ";"
+  },
+
+  "select-wide-layout": {
+    "mod": "mod1",
+    "key": "'"
+  },
+
+  "select-floating-layout": {
+    "mod": "mod1",
+    "key": "f"
+  },
+
+  "swap-ccw": {
+    "mod": "mod1",
+    "key": "n"
+  },
+
+  "swap-cw": {
+    "mod": "mod1",
+    "key": "p"
+  },
+
+  "display-current-layout": {
+      "mod": "mod1",
+      "key": "i"
+  },
+
+
+  "focus-follows-mouse": false,
+
+  "floating": [
+    "com.adiumX.adiumX",
+    "com.bjango.istatmenus",
+    "com.bannister.nestopia",
+    "com.skype.skype",
+    "com.apple.calculator",
+    "com.jetbrains.intellij",
+    "com.apple.iChat",
+    "com.apple.systempreferences",
+    "com.cisco.Cisco-AnyConnect-Secure-Mobility-Client",
+    "com.apple.PreviewDisabled",
+    "com.brother.ControlCenter",
+    "com.aspyr.civ6.appstore",
+    "com.google.Chrome.app.Profile-1-gaedmjdfmmahhbjefcbgaolhhanlaolb"
+  ],
+}

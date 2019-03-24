@@ -1,0 +1,9 @@
+
+bind: ctrl-p meta-k
+bind: ctrl-n meta-j
+
+bind: ctrl-left meta-b
+bind: ctrl-right meta-f
+
+maxhistorysize: Just 1000000
+historyDuplicates: IgnoreAll
