@@ -1,5 +1,5 @@
 
-debug_msg "entering .bash_profile"
+test -f ${HOME}/.bash_debug && echo `whoami`: "entering .bash_profile"
 
 if [ -f $HOME/.bash_include ]; then
   . $HOME/.bash_include
