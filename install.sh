@@ -1,9 +1,6 @@
 #!/bin/bash
 
 THIS_DIR=$(cd $(dirname $0); pwd -P)
-
-echo "THIS_DIR: $THIS_DIR"
-
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
 BACKUPDIR=${HOME}/.dotfiles.backup.d/${TIMESTAMP}
 
