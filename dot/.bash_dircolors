@@ -8,6 +8,7 @@ case $BB_OS in
   *) ;;
 esac
 export LS_COLORS
+export LSCOLORS=$LS_COLORS
 
 debug_msg "leaving .bash_dircolors"
 # vim: filetype=sh
