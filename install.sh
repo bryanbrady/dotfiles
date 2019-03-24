@@ -14,7 +14,7 @@ ALLFILES=( "${DOTFILES[@]} ${VIMFILES[@]}" )
 backup-dotfiles () {
   mkdir -p ${BACKUPDIR}
   for f in ${ALLFILES}; do
-    cp -rH $f ${BACKUPDIR} || :
+    cp -RH $f ${BACKUPDIR} || :
   done
 }
 
@@ -24,9 +24,20 @@ link-dotfiles () {
   done
 }
 
+update-karabiner () {
+  K=${HOME}/.config/karabiner
+  if [ -d "$K" ]; then
+    cp -RH $K/ ${BACKUPDIR}
+  else
+    mkdir -p $K
+  fi
+  cp -RH ${THIS_DIR}/karabiner $K
+}
+
 vim-init () {
   vim +PlugInstall +qall
 }
 
 backup-dotfiles
 link-dotfiles
+update-karabiner
