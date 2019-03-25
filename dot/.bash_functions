@@ -165,6 +165,15 @@ f ()
 
 }
 
+browser ()
+{
+  if [[ $BB_OS == 'mac' ]]; then
+      open -a "Google Chrome" $@
+  else
+      echo "Not implemented. Fix this"
+  fi
+}
+
 xrpm ()
 {
   rpm2cpio.pl $1 | cpio -idmv
