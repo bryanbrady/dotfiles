@@ -81,19 +81,16 @@ else
   js      () { find . -type f -name '*.js' -print0 | xargs -0 grep -H "$@" ;}
 fi
 
-# Take a list of files (i.e., output of find) and jump
-# to the nth one. Single argument, n.
-#goto()
-#{
-#  read IN;
-#  DIR=`$IN >> sed "$1q;d"`;
-#  echo $DIR;
-#}
 
 # pushd
 pu ()
 {
-  pushd $1 > /dev/null
+  d=`dirs -v -l | grep $1$`
+  if [ -z "$d" ]; then
+    pushd $1 > /dev/null
+  else
+    pushd +$(echo $d | awk '{print $1}') > /dev/null
+  fi
 }
 
 # popd
