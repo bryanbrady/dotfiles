@@ -16,6 +16,7 @@ if [ -z $ORIG_PATH ]; then
     export ORIG_PATH=$PATH
 fi
 PREPATH=.
+PREPATH=$PREPATH:$HOME/.npm/bin
 PREPATH=$PREPATH:/usr/local/bin
 PREPATH=$PREPATH:/usr/local/sbin
 PREPATH=$PREPATH:$HOME/bin
