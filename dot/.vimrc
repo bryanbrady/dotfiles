@@ -36,7 +36,7 @@ Plug 'jgdavey/tslime.vim'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'nhooyr/vim-markdown-folding'
 "Plug 'LnL7/vim-nix'
-"Plug 'purescript-contrib/purescript-vim'
+Plug 'purescript-contrib/purescript-vim'
 
 " Colorscheme
 Plug 'vim-scripts/wombat256.vim'
