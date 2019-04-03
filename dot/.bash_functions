@@ -270,5 +270,11 @@ stop_tftp_server () {
   sudo launchctl unload -F /System/Library/LaunchDaemons/tftp.plist
 }
 
+# Serial port ttys
+ser ()
+{
+  find /dev -name "*usb*" -o -name "*tty*" 2> /dev/null | grep serial
+}
+
 debug_msg "leaving .bash_functions"
 # vim: set filetype=sh:

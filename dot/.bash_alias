@@ -40,8 +40,6 @@ alias g="ag"
 alias h='history | ag'
 alias hist="history"
 alias ihstory='history'
-alias usbdev='find /dev -name "*usb*" 2> /dev/null'
-alias ttydev='find /dev -name "*tty*" 2> /dev/null'
 
 alias ppwd='pwd -P'
 if [[ $BB_OS == 'mac' ]]; then
