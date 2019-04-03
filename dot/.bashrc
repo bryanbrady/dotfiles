@@ -6,11 +6,10 @@ debug_msg "entering .bashrc"
 # Dotfiles
 ################################################################################
 FILES=(
-  ${HOME}/.bash_colors     \ 
-  ${HOME}/.bash_dircolors  \ 
-  ${HOME}/.bash_alias      \ 
-  ${HOME}/.bash_functions  \ 
-  ${HOME}/.bash_prompt     \ 
+  ${HOME}/.bash_colors     \
+  ${HOME}/.bash_dircolors  \
+  ${HOME}/.bash_functions  \
+  ${HOME}/.bash_prompt     \
   /etc/bash_completion     \
   ${HOME}/.bash_completion \
   ${HOME}/.fzf.bash        \
@@ -25,6 +24,11 @@ if exists brew; then
     $(brew --prefix)/etc/bash_completion.d/git-prompt.sh       \
     )
 fi
+FILES=(
+  ${FILES[@]}         \
+  ${HOME}/.bash_alias \
+  )
+
 
 for f in ${FILES[@]}; do
   if [ -f $f ]; then
