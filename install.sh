@@ -24,11 +24,11 @@ link-dotfiles () {
 update-karabiner () {
   K=${HOME}/.config/karabiner
   if [ -d "$K" ]; then
-    cp -RH $K/ ${BACKUPDIR}
+    cp -RH ${HOME}/.config/karabiner ${BACKUPDIR}
   else
     mkdir -p $K
   fi
-  cp -RH ${THIS_DIR}/karabiner $K
+  cp -RH ${THIS_DIR}/karabiner ${HOME}/.config/
 }
 
 vim-init () {

@@ -98,11 +98,15 @@ fi
 # pushd
 pu ()
 {
-  d=`dirs -v -l | grep $1$`
-  if [ -z "$d" ]; then
-    pushd $1 > /dev/null
+  if [ -z $1 ]; then
+    pushd > /dev/null
   else
-    pushd +$(echo $d | awk '{print $1}') > /dev/null
+    d=`dirs -v -l | grep $1$`
+    if [ -z "$d" ]; then
+      pushd $1 > /dev/null
+    else
+      pushd +$(echo $d | awk '{print $1}') > /dev/null
+    fi
   fi
 }
 
