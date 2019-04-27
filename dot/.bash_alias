@@ -124,8 +124,12 @@ fi
 ################################################################################
 alias di='docker images'
 alias dps='docker ps -a'
+alias drm_untagged='docker rmi $(docker images | grep "^<none>" | awk "{print $1}")'
+alias drm_stopped='docker rm $(docker ps -a -q)'
 
-# Mac only
+################################################################################
+# Rando Mac stuf                                                               #
+################################################################################
 if [[ $BB_OS == 'mac' ]]; then
     alias finderShowHidden='defaults write com.apple.finder ShowAllFiles TRUE'
     alias finderHideHidden='defaults write com.apple.finder ShowAllFiles FALSE'
