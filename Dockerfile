@@ -1,6 +1,7 @@
-FROM ubuntu:bionic
+FROM alpine
 
 WORKDIR /dotfiles
+RUN apk add bash
 COPY . .
-RUN ./install.sh
+RUN /dotfiles/install.sh
 
