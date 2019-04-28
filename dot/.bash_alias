@@ -120,14 +120,6 @@ if exists __git_complete; then
 fi
 
 ################################################################################
-# Docker                                                                       #
-################################################################################
-alias di='docker images'
-alias dps='docker ps -a'
-alias drm_untagged='docker rmi $(docker images | grep "^<none>" | awk "{print $1}")'
-alias drm_stopped='docker rm $(docker ps -a -q)'
-
-################################################################################
 # Rando Mac stuf                                                               #
 ################################################################################
 if [[ $BB_OS == 'mac' ]]; then

@@ -31,6 +31,7 @@ FILES=(
   /usr/share/bash-completion/bash_completion \
   /etc/bash_completion                       \
   ${HOME}/.bash_alias                        \
+  ${HOME}/.bash_docker                       \
   )
 
 
