@@ -8,6 +8,6 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - FINGERPRINT
+            - "93:04:59:b0:0c:92:10:25:5a:5e:2b:0e:71:f8:13:98"
       - run:
           .circleci/deploy.sh
