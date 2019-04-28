@@ -91,7 +91,8 @@ pu ()
   if [ -z $1 ]; then
     pushd > /dev/null
   else
-    d=`dirs -v -l | grep $1$`
+    abs=$(cd $1; pwd -P)
+    d=`dirs -v -l | grep $abs$`
     if [ -z "$d" ]; then
       pushd $1 > /dev/null
     else
