@@ -16,6 +16,7 @@ FILES=(
   ${HOME}/.docker.bash     \
   ${HOME}/.dockerrc        \
   )
+
 if exists brew; then
   FILES=(
     ${FILES[@]}                                                \
@@ -24,6 +25,7 @@ if exists brew; then
     $(brew --prefix)/etc/bash_completion.d/git-prompt.sh       \
     )
 fi
+
 FILES=(
   ${FILES[@]}                                \
   /usr/share/bash-completion/bash_completion \
