@@ -152,7 +152,7 @@ f ()
         shift
         open -a Finder $D $@
     else
-        echo "Not implemented. Fix this"
+        nautilus -w $@ &
     fi
 
 }
