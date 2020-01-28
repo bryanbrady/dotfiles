@@ -50,6 +50,7 @@ else
   alias du2='du -ch --max-depth 2'
   alias i='sudo apt-get install'
   alias s='apt-cache search'
+  alias tree='tree -C'
 fi
 alias df='df -H'
 alias mkdir="mkdir -p"
