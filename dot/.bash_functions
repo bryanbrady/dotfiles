@@ -147,12 +147,12 @@ v () { vim $@; }
 
 f ()
 {
+    D=${1:-.}
+    shift
     if [[ $BB_OS == 'mac' ]]; then
-        D=${1:-.}
-        shift
         open -a Finder $D $@
     else
-        nautilus -w $@ &
+        nautilus -w $D $@ &
     fi
 
 }
