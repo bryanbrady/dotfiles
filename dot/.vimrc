@@ -21,6 +21,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'moll/vim-bbye'
 Plug 'jgdavey/tslime.vim'
+Plug 'rust-lang/rust.vim'
 
 " Haskell
 "Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }

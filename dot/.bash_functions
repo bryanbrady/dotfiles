@@ -142,7 +142,7 @@ gvim ()
 }
 alias gv='gvim'
 
-v () { vim $@; }
+v () { vim "$@"; }
 
 e ()
 {
@@ -267,7 +267,7 @@ stop_tftp_server () {
 # Serial port ttys
 ser ()
 {
-  find /dev -name "*usb*" -o -name "*tty*" 2> /dev/null | grep serial
+  find /dev -name "*usb*" -o -name "*tty*" 2> /dev/null | grep 'serial\|SLAB'
 }
 
 ################################################################################

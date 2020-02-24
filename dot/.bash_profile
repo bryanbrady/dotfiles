@@ -17,6 +17,7 @@ if [ -z $ORIG_PATH ]; then
 fi
 PREPATH=.
 PREPATH=$PREPATH:$HOME/.npm/bin
+PREPATH=$PREPATH:$HOME/.cargo/bin
 PREPATH=$PREPATH:/usr/local/bin
 PREPATH=$PREPATH:/usr/local/sbin
 PREPATH=$PREPATH:$HOME/bin
@@ -30,3 +31,5 @@ export PATH=$PREPATH:$ORIG_PATH
 
 debug_msg "leaving .bash_profile"
 # vim: set filetype=sh:
+
+export PATH="$HOME/.cargo/bin:$PATH"
