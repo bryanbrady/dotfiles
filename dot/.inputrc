@@ -17,7 +17,7 @@ set bind-tty-special-chars off
 
 # fzf
 # Ctrl-f triggers Ctrl-t
-"\C-f": "fzf\C-m"
+#"\C-f": "fzf\C-m"
 
 # Ctrl-j triggers fzf_cd
 "\C-j": "\C-e\ec"

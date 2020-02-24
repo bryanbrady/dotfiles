@@ -91,7 +91,8 @@ pu ()
   if [ -z $1 ]; then
     pushd > /dev/null
   else
-    d=`dirs -v -l | grep $1$`
+    abs=$(cd $1; pwd -P)
+    d=`dirs -v -l | grep $abs$`
     if [ -z "$d" ]; then
       pushd $1 > /dev/null
     else
@@ -144,23 +145,14 @@ alias gv='gvim'
 
 v () { vim "$@"; }
 
-e ()
-{
-    if [[ $BB_OS == 'mac' ]]; then
-        open -a emacs $@
-    else
-        emacs $@ &
-    fi
-}
-
 f ()
 {
+    D=${1:-.}
+    shift
     if [[ $BB_OS == 'mac' ]]; then
-        D=${1:-.}
-        shift
         open -a Finder $D $@
     else
-        echo "Not implemented. Fix this"
+        nautilus -w $D $@ &
     fi
 
 }
@@ -219,7 +211,7 @@ monitor_file_size () {
 }
 
 
-extract () {
+e () {
  if [ -z "$1" ]; then
     # display usage if no parameters given
     echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"

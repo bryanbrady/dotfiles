@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 
 sha=`git rev-parse HEAD`
 sh gen.sh > /tmp/env

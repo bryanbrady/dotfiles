@@ -16,6 +16,7 @@ FILES=(
   ${HOME}/.docker.bash     \
   ${HOME}/.dockerrc        \
   )
+
 if exists brew; then
   FILES=(
     ${FILES[@]}                                                \
@@ -24,9 +25,13 @@ if exists brew; then
     $(brew --prefix)/etc/bash_completion.d/git-prompt.sh       \
     )
 fi
+
 FILES=(
-  ${FILES[@]}         \
-  ${HOME}/.bash_alias \
+  ${FILES[@]}                                \
+  /usr/share/bash-completion/bash_completion \
+  /etc/bash_completion                       \
+  ${HOME}/.bash_alias                        \
+  ${HOME}/.bash_docker                       \
   )
 
 
@@ -71,6 +76,9 @@ stty -ixon        # Disable XON/XOFF flow control (^s/^q)
 complete -cf sudo # Tab complete for sudo
 set -o noclobber  # Prevent overwriting files
 
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 ################################################################################
 # History                                                                      #
 ################################################################################
@@ -105,6 +113,13 @@ __fzf_cd__() {
     -o -type d -print 2> /dev/null | cut -b3-"}"
   dir=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m) && printf 'pushd %q > /dev/null' "$dir"
 }
+
+################################################################################
+# go
+################################################################################
+export GOROOT=/usr/local/go
+export GOPATH=${HOME}/go
+
 
 debug_msg "leaving .bashrc"
 # vim: set filetype=sh:

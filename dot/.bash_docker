@@ -1,0 +1,21 @@
+debug_msg "entering .bash_docker"
+
+################################################################################
+# Docker                                                                       #
+################################################################################
+di  () { docker images ;}
+dps () { docker ps -a ;}
+
+drm_untagged ()
+{
+  docker rmi $(docker images | grep '^<none>' | awk '{print $1}')
+}
+
+drm_stopped ()
+{
+  docker rm $(docker ps -a -q)
+}
+
+debug_msg "leaving .bash_docker"
+
+# vim: set filetype=sh:
