@@ -37,7 +37,10 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "escape"
+                                        "key_code": "escape",
+                                        "modifiers":  [
+                                                "any"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -65,7 +68,10 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "escape"
+                                        "key_code": "escape",
+                                        "modifiers": [
+                                                "any"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -93,7 +99,10 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "escape"
+                                        "key_code": "escape",
+                                        "modifiers": [
+                                                "any"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -121,7 +130,10 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "escape"
+                                        "key_code": "escape",
+                                        "modifiers": [
+                                                "any"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -149,7 +161,10 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "escape"
+                                        "key_code": "escape",
+                                        "modifiers": [
+                                                "any"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -342,6 +357,14 @@
                     },
                     "to": {
                         "consumer_key_code": "volume_decrement"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "keypad_enter"
+                    },
+                    "to": {
+                        "key_code": "return_or_enter"
                     }
                 }
             ],
