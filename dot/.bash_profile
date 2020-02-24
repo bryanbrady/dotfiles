@@ -35,7 +35,3 @@ export PATH=$PREPATH:$ORIG_PATH
 debug_msg "leaving .bash_profile"
 # vim: set filetype=sh:
 
-<<<<<<< HEAD
-export PATH="$HOME/.cargo/bin:$PATH"
-=======
->>>>>>> ee1d3eb160d0ce1e8310fa88ce0c79fe560db162
