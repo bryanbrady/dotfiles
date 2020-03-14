@@ -68,10 +68,9 @@ export PAGER="less -ifR"
 ################################################################################
 # Misc. Bash Configuration                                                     #
 ################################################################################
-stty stop ""      # stty steals Ctrl-S from bash, so undefine it.
-                  # probably subsumed by next line...
-stty -ixon        # Disable XON/XOFF flow control (^s/^q)
-#stty dsusp undef  # Prevent Ctrl-Y from killing GHCi
+[ -t 0 ] && stty stop ""      # stty steals Ctrl-S from bash, so undefine it.
+[ -t 0 ] && stty -ixon        # Disable XON/XOFF flow control (^s/^q)
+##stty dsusp undef  # Prevent Ctrl-Y from killing GHCi
 complete -cf sudo # Tab complete for sudo
 set -o noclobber  # Prevent overwriting files
 
