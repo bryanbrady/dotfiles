@@ -64,7 +64,6 @@ export EMACS=emacs
 export EDITOR=vim
 export VISUAL=vim
 export PAGER="less -ifR"
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 ################################################################################
 # Misc. Bash Configuration                                                     #
@@ -88,8 +87,8 @@ export HISTFILE=~/.bash_eternal_history
 export HISTCONTROL=ignoredups:erasedups:ignorespace
 export HISTIGNORE='ls:ll:ltr:la:lla:ltra:lsr:lr:history:pu:po:d:h:h *'
 export HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S  '
-shopt -s histappend  # Append to history file, instead of overwrite
-shopt -s checkwinsize
+shopt -s histappend   # Append to history file, instead of overwrite
+shopt -s checkwinsize # Check window size after each command
 # Reload history after every command in every shell instance
 PROMPT_COMMAND0='setup_prompt';
 PROMPT_COMMAND1='history -a; history -n'
