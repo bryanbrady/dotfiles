@@ -115,7 +115,7 @@ shopt -s histappend   # Append to history file, instead of overwrite
 shopt -s checkwinsize # Check window size after each command
 # Reload history after every command in every shell instance
 PROMPT_COMMAND0='setup_prompt';
-PROMPT_COMMAND1='history -a; history -n'
+PROMPT_COMMAND1='history -a; history -c; history -r'
 PROMPT_COMMAND2='echo -ne "\033];${PWD}\007"'  # Set terminal title
 export PROMPT_COMMAND="$PROMPT_COMMAND0;$PROMPT_COMMAND1;$PROMPT_COMMAND2"
 
