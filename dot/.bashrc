@@ -1,6 +1,31 @@
 
-test ! -f ${HOME}/.bash_include || . ${HOME}/.bash_include
+if [ -f $HOME/.bash_include ]; then
+  . $HOME/.bash_include
+fi
 debug_msg "entering .bashrc"
+
+################################################################################
+# Path                                                                         #
+################################################################################
+if [ -z $ORIG_PATH ]; then
+    export ORIG_PATH=$PATH
+fi
+PREPATH=.
+PREPATH=$PREPATH:$HOME/bin
+PREPATH=$PREPATH:$HOME/.local/bin
+PREPATH=$PREPATH:$HOME/.cargo/bin
+PREPATH=$PREPATH:${GOPATH}/bin:${GOROOT}/bin
+PREPATH=$PREPATH:$HOME/.npm/bin
+PREPATH=$PREPATH:$HOME/.cargo/bin
+PREPATH=$PREPATH:/opt/firefox
+PREPATH=$PREPATH:/usr/local/bin
+PREPATH=$PREPATH:/usr/local/sbin
+export PATH=$PREPATH:$ORIG_PATH
+
+################################################################################
+# Library path                                                                 #
+################################################################################
+#export LD_LIBRARY_PATH=
 
 ################################################################################
 # Dotfiles
@@ -112,12 +137,12 @@ __fzf_cd__() {
   dir=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m) && printf 'pushd %q > /dev/null' "$dir"
 }
 
+
 ################################################################################
 # go
 ################################################################################
 export GOROOT=/usr/local/go
 export GOPATH=${HOME}/go
-
 
 debug_msg "leaving .bashrc"
 # vim: set filetype=sh:
