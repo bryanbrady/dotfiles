@@ -7,14 +7,14 @@ function setup_prompt () {
 local PROMPT_CODE="$(\
   rc=$?;
   if [[ $rc == 0 ]]; then \
-    echo ${IGreen}${rc}${Clear}; \
+    echo ${BIGreen}${rc}${Clear}; \
   else \
-    echo ${IRed}${rc}${Clear}; \
+    echo ${BIRed}${rc}${Clear}; \
   fi\
   )";
-PROMPT_TIME="${IGreen}\A${BIBlack}"
-PROMPT_DATE="${IGreen}\D{%b %d}${BIBlack} (${IGreen}\D{%a}${BIBlack}) "
-PROMPT_USERHOST="[${ICyan}\u${BIBlack}@${ICyan}\h${BIBlack}]"
+PROMPT_TIME="${BIGreen}\A${BIBlack}"
+PROMPT_DATE="${BIGreen}\D{%b %d}${BIBlack} (${BIGreen}\D{%a}${BIBlack}) "
+PROMPT_USERHOST="[${BICyan}\u${BIBlack}@${BICyan}\h${BIBlack}]"
 if exists __git_ps1; then
 PROMPT_GIT='$(__git_ps1 "(%s)")'
 fi
