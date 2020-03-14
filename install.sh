@@ -37,4 +37,7 @@ vim-init () {
 
 backup-dotfiles
 link-dotfiles
-update-karabiner
+
+if [[ $(uname) == 'Darwin' ]]; then
+  update-karabiner
+fi
