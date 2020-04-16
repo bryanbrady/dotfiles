@@ -35,7 +35,7 @@ Plug 'rust-lang/rust.vim'
 
 " Syntax
 Plug 'JuliaEditorSupport/julia-vim'
-Plug 'nhooyr/vim-markdown-folding'
+"Plug 'nhooyr/vim-markdown-folding'
 "Plug 'LnL7/vim-nix'
 Plug 'purescript-contrib/purescript-vim'
 
@@ -44,7 +44,7 @@ Plug 'vim-scripts/wombat256.vim'
 
 " My stuff
 Plug 'bryanbrady/vim-airline-themes'
-Plug 'git@bitbucket.org:bryanbrady/vim-all-cmd'
+"Plug 'git@bitbucket.org:bryanbrady/vim-all-cmd'
 
 call plug#end()
 "}}}
