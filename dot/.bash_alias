@@ -36,8 +36,8 @@ alias eamcs='emacs'
 alias emcas='emacs'
 alias xterm='xterm -bg black -fg white'
 
-alias g="ag"
-alias h='history | ag'
+alias g="ack"
+alias h='history | ack'
 alias hist="history"
 alias ihstory='history'
 
