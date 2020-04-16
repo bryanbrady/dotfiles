@@ -1,0 +1,18 @@
+[global_config]
+  focus = mouse
+[keybindings]
+  full_screen = <Alt>Return
+  split_horiz = <Alt>2
+  split_vert = <Alt>3
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"

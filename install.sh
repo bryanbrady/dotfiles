@@ -31,6 +31,15 @@ update-karabiner () {
   cp -RH ${THIS_DIR}/karabiner ${HOME}/.config/
 }
 
+update-terminator () {
+  K=${HOME}/.config/terminator
+  if [ -d "$K" ]; then
+    mv ${HOME}/.config/terminator ${BACKUPDIR}
+  fi
+  mkdir -p $K
+  ln -sfn ${THIS_DIR}/terminator/config ${HOME}/.config/terminator/config
+}
+
 vim-init () {
   vim +PlugInstall +qall
 }
@@ -40,4 +49,8 @@ link-dotfiles
 
 if [[ $(uname) == 'Darwin' ]]; then
   update-karabiner
+fi
+
+if [[ $(uname) == 'Linux' ]]; then
+  update-terminator
 fi
