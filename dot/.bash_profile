@@ -5,7 +5,7 @@ if [ -f $HOME/.bash_include ]; then
   . $HOME/.bash_include
 fi
 
-if [ -f $HOME/.profile]; then
+if [ -f $HOME/.profile ]; then
   . $HOME/.profile
 fi
 
