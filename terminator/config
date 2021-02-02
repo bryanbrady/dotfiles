@@ -2,6 +2,10 @@
   focus = mouse
 [keybindings]
   full_screen = <Alt>Return
+  go_next = None
+  go_prev = None
+  new_tab = <Alt>t
+  new_window = <Alt>n
   split_horiz = <Alt>2
   split_vert = <Alt>3
 [layouts]

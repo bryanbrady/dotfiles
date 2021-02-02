@@ -22,6 +22,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'moll/vim-bbye'
 Plug 'jgdavey/tslime.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'supercollider/scvim'
 
 " Haskell
 "Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -476,3 +477,10 @@ augroup fold
   autocmd InsertLeave * call s:resFoldMethod()
 augroup END
 " }}}
+"
+
+"----------------------------------------------------------------------------{{{
+" SuperCollider
+"-------------------------------------------------------------------------------
+au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
+au Filetype supercollider packadd scvim

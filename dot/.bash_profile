@@ -16,3 +16,5 @@ fi
 debug_msg "leaving .bash_profile"
 # vim: set filetype=sh:
 
+
+export PATH="$HOME/.cargo/bin:$PATH"
