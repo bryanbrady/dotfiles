@@ -36,10 +36,9 @@ alias eamcs='emacs'
 alias emcas='emacs'
 alias xterm='xterm -bg black -fg white'
 
-alias g="ack"
-alias h='history | ack'
+alias g="rg"
+alias h='history | rg'
 alias hist="history"
-alias ihstory='history'
 
 alias ppwd='pwd -P'
 if [[ $BB_OS == 'mac' ]]; then
