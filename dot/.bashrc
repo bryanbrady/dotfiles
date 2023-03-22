@@ -20,6 +20,7 @@ PREPATH=$PREPATH:$HOME/.cargo/bin
 PREPATH=$PREPATH:/opt/firefox
 PREPATH=$PREPATH:/usr/local/bin
 PREPATH=$PREPATH:/usr/local/sbin
+PREPATH=$PREPATH:/opt/homebrew/bin
 export PATH=$PREPATH:$ORIG_PATH
 
 ################################################################################
@@ -130,13 +131,12 @@ fi
 # fzf
 ################################################################################
 # Use pushd instead of cd
-__fzf_cd__() {
-  local cmd dir
-  cmd="${FZF_ALT_C_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
-    -o -type d -print 2> /dev/null | cut -b3-"}"
-  dir=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m) && printf 'pushd %q > /dev/null' "$dir"
-}
-
+# __fzf_cd__() {
+#   local cmd dir
+#   cmd="${FZF_ALT_C_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
+#     -o -type d -print 2> /dev/null | cut -b3-"}"
+#   dir=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m) && printf 'pushd %q > /dev/null' "$dir"
+# }
 
 ################################################################################
 # go
@@ -146,3 +146,6 @@ export GOPATH=${HOME}/go
 
 debug_msg "leaving .bashrc"
 # vim: set filetype=sh:
+. "$HOME/.cargo/env"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
