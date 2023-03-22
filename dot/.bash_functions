@@ -35,6 +35,9 @@ cp_progress () { rsync -WavP --human-readable --progress $1 $2; }
 ## Print a horizontal rule
 rule () { printf "%$(tput cols)s\n"|tr " " "─"; }
 
+# Python venv
+venv () { source $(find venv -type d -d  1)/bin/activate; }
+
 ################################################################################
 # Which                                                                        #
 ################################################################################
@@ -48,7 +51,18 @@ pud () { pushd `dirname $1` ;}               # pu to dirname output
 ################################################################################
 # Search                                                                       #
 ################################################################################
-if exists ag; then
+if exists rg; then
+  any     () { rg --nopager "$@" ;}
+  anyc    () { rg --nopager --cc --cpp "$@" ;}
+  anyh    () { rg --nopager --hh "$@" ;}
+  anyhs   () { rg --nopager --haskell "$@" ;}
+  anynix  () { rg --nopager --nix "$@" ;}
+  anypy   () { rg --nopager --python "$@" ;}
+  anyyaml () { rg --nopager --yaml "$@" ;}
+  json    () { rg --nopager --json "$@" ;}
+  js      () { rg --nopager --js "$@" ;}
+  jv      () { rg --nopager --java "$@" ;}
+elif exists ag; then
   any     () { ag --nopager "$@" ;}
   anyc    () { ag --nopager --cc --cpp "$@" ;}
   anyh    () { ag --nopager --hh "$@" ;}
