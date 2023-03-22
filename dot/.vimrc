@@ -8,9 +8,9 @@ source $HOME/.vim/bb/functions.vim
 "---------------------------------------------------------------------------------------------------
 call plug#begin('~/.vim/plugs')
 Plug 'kien/ctrlp.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'godlygeek/tabular'
-"Plug 'tpope/vim-fugitive'
+"Plug 'easymotion/vim-easymotion'
+"Plug 'godlygeek/tabular'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 "Plug 'tpope/vim-repeat'
@@ -18,11 +18,11 @@ Plug 'tpope/vim-commentary'
 Plug 'ntpeters/vim-better-whitespace'
 "Plug 'vim-scripts/taglist.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'moll/vim-bbye'
-Plug 'jgdavey/tslime.vim'
+"Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+"Plug 'moll/vim-bbye'
+"Plug 'jgdavey/tslime.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'supercollider/scvim'
+"Plug 'supercollider/scvim'
 
 " Haskell
 "Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
