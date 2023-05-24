@@ -31,5 +31,7 @@ _ssh()
 }
 complete -F _ssh ssh
 
+# MacVim / gvim
+complete -o default -f gv
 
 debug_msg "leaving .bash_completion"
