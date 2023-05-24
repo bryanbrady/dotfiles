@@ -35,5 +35,5 @@ endif
 if has("gui_macvim")
   source ~/.vimrc " MacVim isn't sourcing this
   set macmeta     " Make alt/option work
-  set guifont=Menlo\ Regular:h10
+  set guifont=Menlo\ Regular:h12
 endif
