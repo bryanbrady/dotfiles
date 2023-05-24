@@ -105,7 +105,7 @@ pu ()
   if [ -z $1 ]; then
     pushd > /dev/null
   else
-    abs=$(cd $1; pwd -P)
+    abs=$(pushd $1; pwd -P)
     d=`dirs -v -l | grep $abs$`
     if [ -z "$d" ]; then
       pushd $1 > /dev/null
@@ -147,7 +147,7 @@ pdf ()
     fi
 }
 
-gvim ()
+gv ()
 {
     if [[ $BB_OS == 'mac' ]]; then
         open -a MacVim "$@"
@@ -155,7 +155,7 @@ gvim ()
         /usr/bin/gvim $@
     fi
 }
-alias gv='gvim'
+alias gvim='gv' # old habits die hard
 
 v () { vim "$@"; }
 
