@@ -144,8 +144,20 @@ fi
 export GOROOT=/usr/local/go
 export GOPATH=${HOME}/go
 
+################################################################################
+# Python
+################################################################################
+alias awsume=". awsume"
+
 debug_msg "leaving .bashrc"
-# vim: set filetype=sh:
 . "$HOME/.cargo/env"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/bryan.brady/bin/google-cloud-sdk/path.bash.inc' ]; then . '/Users/bryan.brady/bin/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/bryan.brady/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/bryan.brady/bin/google-cloud-sdk/completion.bash.inc'; fi
+
+# vim: set filetype=sh:
