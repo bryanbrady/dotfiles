@@ -45,7 +45,7 @@ Plug 'vim-scripts/wombat256.vim'
 
 " My stuff
 Plug 'bryanbrady/vim-airline-themes'
-"Plug 'git@bitbucket.org:bryanbrady/vim-all-cmd'
+Plug 'git@github.com:bryanbrady/vim-all-cmd'
 
 call plug#end()
 "}}}
@@ -231,7 +231,7 @@ nnoremap <C-F9> :CtrlP <c-r>=expand("%:p:h")<CR><CR>
 nnoremap <F10> :call CopyBufferIntoNew()<CR>
 "nnoremap <F11> :Scratch<CR>
 nnoremap <F11> :call DebugBuffer()<CR>
-nnoremap <C-F11> :e $HOME/scratch<CR>
+nnoremap <C-F11> :e $HOME/scratch.txt<CR>
 nnoremap <C-F12> :ReloadConfig<CR>
 "Testing
 "nnoremap <F12> :call Test()<CR>
@@ -256,6 +256,9 @@ nnoremap <C-PageUp> :bprevious<CR>
 " Use ctrl-Home/End to cycle through tabs
 nnoremap <C-Home> :tabprevious<CR>
 nnoremap <C-End> :tabnext<CR>
+" Use Command-Left/Right to cycle through tabs
+nnoremap <D-Left> :tabprevious<CR>
+nnoremap <D-Right> :tabnext<CR>
 
 nnoremap <C-q> <C-^>
 
