@@ -36,7 +36,14 @@ cp_progress () { rsync -WavP --human-readable --progress $1 $2; }
 rule () { printf "%$(tput cols)s\n"|tr " " "─"; }
 
 # Python venv
-venv () { source $(find venv -type d -d  1)/bin/activate; }
+venv ()
+{
+  if [[ $BB_OS == 'linux' ]]; then
+    source $(find venv -mindepth 1 -maxdepth 1 -type d)/bin/activate;
+  else
+    source $(find venv -type d -d  1)/bin/activate;
+  fi
+}
 
 ################################################################################
 # Which                                                                        #
