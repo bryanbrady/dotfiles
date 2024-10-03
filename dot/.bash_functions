@@ -59,16 +59,16 @@ pud () { pushd `dirname $1` ;}               # pu to dirname output
 # Search                                                                       #
 ################################################################################
 if exists rg; then
-  any     () { rg --nopager "$@" ;}
-  anyc    () { rg --nopager --cc --cpp "$@" ;}
-  anyh    () { rg --nopager --hh "$@" ;}
-  anyhs   () { rg --nopager --haskell "$@" ;}
-  anynix  () { rg --nopager --nix "$@" ;}
-  anypy   () { rg --nopager --python "$@" ;}
-  anyyaml () { rg --nopager --yaml "$@" ;}
-  json    () { rg --nopager --json "$@" ;}
-  js      () { rg --nopager --js "$@" ;}
-  jv      () { rg --nopager --java "$@" ;}
+  any     () { rg "$@" ;}
+  anyc    () { rg -t c -t cpp "$@" ;}
+  anyh    () { rg -t h "$@" ;}
+  anyhs   () { rg -t hs "$@" ;}
+  anynix  () { rg -t nix "$@" ;}
+  anypy   () { rg -t py  "$@" ;}
+  anyyaml () { rg -t yaml "$@" ;}
+  json    () { rg -t json "$@" ;}
+  js      () { rg -t js "$@" ;}
+  jv      () { rg -t java "$@" ;}
 elif exists ag; then
   any     () { ag --nopager "$@" ;}
   anyc    () { ag --nopager --cc --cpp "$@" ;}
