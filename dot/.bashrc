@@ -149,15 +149,21 @@ export GOPATH=${HOME}/go
 ################################################################################
 alias awsume=". awsume"
 
-debug_msg "leaving .bashrc"
+################################################################################
+# Other
+################################################################################
 . "$HOME/.cargo/env"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/bryan.brady/bin/google-cloud-sdk/path.bash.inc' ]; then . '/Users/bryan.brady/bin/google-cloud-sdk/path.bash.inc'; fi
+[ -f "$HOME/bin/google-cloud-sdk/path.bash.inc" ] && . "$HOME/bin/google-cloud-sdk/path.bash.inc"
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/bryan.brady/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/bryan.brady/bin/google-cloud-sdk/completion.bash.inc'; fi
+[ -f "$HOME/bin/google-cloud-sdk/completion.bash.inc" ] && . "$HOME/bin/google-cloud-sdk/completion.bash.inc"
 
+# Haskell
+[ -f "/Users/brady/.ghcup/env" ] && . "/Users/brady/.ghcup/env" # ghcup-env
+
+debug_msg "leaving .bashrc"
 # vim: set filetype=sh:
