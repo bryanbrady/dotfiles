@@ -44,6 +44,13 @@ vim-init () {
   vim +PlugInstall +qall
 }
 
+link-ghci-conf () {
+  H=${HOME}/.ghc
+  mkdir -p $H
+  ln -sfn ${THIS_DIR}/haskell/ghci.conf ${HOME}/.ghc/ghci.conf
+}
+
+
 backup-dotfiles
 link-dotfiles
 
