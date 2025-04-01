@@ -1,4 +1,3 @@
-
 if [ -f $HOME/.bash_include ]; then
   . $HOME/.bash_include
 fi
@@ -7,7 +6,7 @@ debug_msg "entering .bashrc"
 ################################################################################
 # Path                                                                         #
 ################################################################################
-if [ -z $ORIG_PATH ]; then
+if [ -z "$ORIG_PATH" ]; then
     export ORIG_PATH=$PATH
 fi
 PREPATH=.

@@ -1,4 +1,3 @@
-" vi: set foldtext=MyCommentBlockFold():
 " Author : Bryan Brady
 
 source $HOME/.vim/bb/functions.vim
@@ -487,3 +486,27 @@ augroup END
 "-------------------------------------------------------------------------------
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
 au Filetype supercollider packadd scvim
+" }}}
+
+"----------------------------------------------------------------------------{{{
+" FixNewLines
+"-------------------------------------------------------------------------------
+command! FixNewlines call FixNewlines()
+
+function! FixNewlines()
+  let l:pattern = '\r\(\n\)'
+  let l:replacement = '\1'
+  let l:flags = 'g'
+
+  if mode() ==# 'v' || mode() ==# 'V' || mode() ==# "\<C-v>"
+    " Apply to visual selection
+    normal! `<
+    let l:start = line("'<")
+    let l:end = line("'>")
+    execute l:start . "," . l:end . 's/' . l:pattern . '/' . l:replacement . '/' . l:flags
+  else
+    " Apply to the whole buffer
+    execute '%s/' . l:pattern . '/' . l:replacement . '/' . l:flags
+  endif
+endfunction
+" }}}
