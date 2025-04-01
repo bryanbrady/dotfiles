@@ -162,7 +162,10 @@ alias awsume=". awsume"
 [ -f "$HOME/bin/google-cloud-sdk/completion.bash.inc" ] && . "$HOME/bin/google-cloud-sdk/completion.bash.inc"
 
 # Haskell
-[ -f "/Users/brady/.ghcup/env" ] && . "/Users/brady/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+
+# OrbStack
+source ~/.orbstack/shell/init.bash 2>/dev/null || :
 
 debug_msg "leaving .bashrc"
 # vim: set filetype=sh:
