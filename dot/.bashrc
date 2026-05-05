@@ -151,7 +151,7 @@ alias awsume=". awsume"
 ################################################################################
 # Other
 ################################################################################
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -165,7 +165,7 @@ alias awsume=". awsume"
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
 # OrbStack
-source ~/.orbstack/shell/init.bash 2>/dev/null || :
+# source ~/.orbstack/shell/init.bash 2>/dev/null || :
 
 debug_msg "leaving .bashrc"
 # vim: set filetype=sh:
