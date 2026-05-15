@@ -24,6 +24,9 @@
   mcp = "!_mcp() { OLDBR=$(git rev-parse --abbrev-ref HEAD); git checkout master; git pull; git checkout $OLDBR; }; _mcp"
   exclude = "!sh -c 'echo \"$1\" >> .git/info/exclude' -"
   astats = shortlog -sn
+  find = "!f() { git lg -S\"$1\"; }; f"
+  who = "!f() { git lg --author=\"$1\"; }; f"
+  ahead = log main..HEAD --oneline
 [color]
 	ui = true
 [filter "lfs"]
