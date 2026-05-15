@@ -510,3 +510,21 @@ function! FixNewlines()
   endif
 endfunction
 " }}}
+
+"----------------------------------------------------------------------------{{{
+" FixNewLines
+"-------------------------------------------------------------------------------
+function! OpenInVSCode() abort
+  let l:file = expand('%:p')
+  if empty(l:file) | return | endif
+  let l:target = printf('%s:%d:%d', l:file, line('.'), col('.'))
+  let l:cmd = ['code', '--goto', l:target]
+  if has('nvim')
+    call jobstart(l:cmd, {'detach': v:true})
+  else
+    call job_start(l:cmd)
+  endif
+endfunction
+" }}}
+command! OpenInVSCode call OpenInVSCode()
+nnoremap <leader>vc :OpenInVSCode<CR>

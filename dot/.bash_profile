@@ -1,4 +1,3 @@
-
 test -f ${HOME}/.bash_debug && echo `whoami`: "entering .bash_profile"
 
 if [ -f $HOME/.bash_include ]; then
@@ -15,3 +14,7 @@ fi
 
 debug_msg "leaving .bash_profile"
 # vim: set filetype=sh:
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/bryan/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

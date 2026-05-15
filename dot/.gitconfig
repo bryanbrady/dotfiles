@@ -1,9 +1,9 @@
 [user]
 	name = Bryan Brady
-	email = bryan.brady@gmail.com
+	email = bryan@atomicmachines.com
 [core]
 	autocrlf = input
-	excludesfile = ${HOME}/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = vim
 [push]
 	default = tracking
@@ -31,3 +31,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[init]
+	defaultBranch = main

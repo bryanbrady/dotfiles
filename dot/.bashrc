@@ -20,6 +20,10 @@ PREPATH=$PREPATH:/opt/firefox
 PREPATH=$PREPATH:/usr/local/bin
 PREPATH=$PREPATH:/usr/local/sbin
 PREPATH=$PREPATH:/opt/homebrew/bin
+PREPATH=$PREPATH:$HOME/.rd/bin
+if  [ -d ${HOME}/.pyenv/bin ]; then
+  PREPATH=$PREPATH:${HOME}/.pyenv/bin
+fi
 export PATH=$PREPATH:$ORIG_PATH
 
 ################################################################################
@@ -89,6 +93,7 @@ export EMACS=emacs
 export EDITOR=vim
 export VISUAL=vim
 export PAGER="less -ifR"
+export GRAPHVIZ_DOT=/opt/homebrew/bin/dot
 
 ################################################################################
 # Misc. Bash Configuration                                                     #
@@ -127,6 +132,15 @@ if [ -f ~/.inputrc ]; then
 fi
 
 ################################################################################
+# SSH
+################################################################################
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)" > /dev/null
+    echo "SSH Agent started..."
+    ssh-add ~/.ssh/id_ed25519
+fi
+
+################################################################################
 # fzf
 ################################################################################
 # Use pushd instead of cd
@@ -146,7 +160,11 @@ export GOPATH=${HOME}/go
 ################################################################################
 # Python
 ################################################################################
-alias awsume=". awsume"
+#alias awsume=". awsume"
+export PYENV_ROOT="$HOME/.pyenv"
+# See PREPATH above
+#[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
 
 ################################################################################
 # Other

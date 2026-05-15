@@ -59,6 +59,7 @@ pud () { pushd `dirname $1` ;}               # pu to dirname output
 # Search                                                                       #
 ################################################################################
 if exists rg; then
+  all     () { rg --no-ignore --hidden "$@" ;}
   any     () { rg "$@" ;}
   anyc    () { rg -t c -t cpp "$@" ;}
   anyh    () { rg -t h "$@" ;}
