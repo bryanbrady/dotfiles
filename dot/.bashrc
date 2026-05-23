@@ -171,7 +171,10 @@ eval "$(pyenv init - bash)"
 ################################################################################
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# FZF
+if command -v fzf >/dev/null 2>&1; then
+    eval "$(fzf --bash)"
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 [ -f "$HOME/bin/google-cloud-sdk/path.bash.inc" ] && . "$HOME/bin/google-cloud-sdk/path.bash.inc"

@@ -42,6 +42,9 @@ Plug 'purescript-contrib/purescript-vim'
 " Colorscheme
 Plug 'vim-scripts/wombat256.vim'
 
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 " My stuff
 Plug 'bryanbrady/vim-airline-themes'
 Plug 'git@github.com:bryanbrady/vim-all-cmd'
