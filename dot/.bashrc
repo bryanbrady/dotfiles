@@ -13,9 +13,8 @@ PREPATH=.
 PREPATH=$PREPATH:$HOME/bin
 PREPATH=$PREPATH:$HOME/.local/bin
 PREPATH=$PREPATH:$HOME/.cargo/bin
-PREPATH=$PREPATH:${GOPATH}/bin:${GOROOT}/bin
 PREPATH=$PREPATH:$HOME/.npm/bin
-PREPATH=$PREPATH:$HOME/.cargo/bin
+PREPATH=$PREPATH:${GOPATH}/bin:${GOROOT}/bin
 PREPATH=$PREPATH:/opt/firefox
 PREPATH=$PREPATH:/usr/local/bin
 PREPATH=$PREPATH:/usr/local/sbin
@@ -123,6 +122,14 @@ PROMPT_COMMAND0='setup_prompt';
 PROMPT_COMMAND1='history -a; history -c; history -r'
 PROMPT_COMMAND2='echo -ne "\033];${PWD}\007"'  # Set terminal title
 export PROMPT_COMMAND="$PROMPT_COMMAND0;$PROMPT_COMMAND1;$PROMPT_COMMAND2"
+
+################################################################################
+# SSH Agent                                                                    #
+################################################################################
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_ed25519
+fi
 
 ################################################################################
 # INPUTRC                                                                      #
