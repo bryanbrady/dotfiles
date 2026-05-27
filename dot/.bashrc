@@ -167,11 +167,12 @@ export GOPATH=${HOME}/go
 ################################################################################
 # Python
 ################################################################################
-#alias awsume=". awsume"
-export PYENV_ROOT="$HOME/.pyenv"
-# See PREPATH above
-#[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
+if command -v pyenv >/dev/null 2>&1; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  # See PREPATH above
+  #[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init - bash)"
+fi
 
 ################################################################################
 # Other
@@ -197,3 +198,5 @@ fi
 
 debug_msg "leaving .bashrc"
 # vim: set filetype=sh:
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
