@@ -73,7 +73,7 @@ done
 # Private dotfiles
 ################################################################################
 if [ -d ${HOME}/dotfiles-private ]; then
-  for f in ${HOME}/dotfiles-private/*
+  for f in ${HOME}/dotfiles-private/*.env
   do
     # Ignore files with leading _
     if ! [[ ${f##*/} =~ _.* ]]; then
