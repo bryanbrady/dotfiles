@@ -175,14 +175,27 @@ if command -v pyenv >/dev/null 2>&1; then
 fi
 
 ################################################################################
-# Other
+# Rust
 ################################################################################
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
+################################################################################
+# FNM, Node, etc
+################################################################################
+FNM_PATH="/home/brady/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell bash)"
+fi
+
+################################################################################
 # FZF
+################################################################################
 if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --bash)"
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # The next line updates PATH for the Google Cloud SDK.
 [ -f "$HOME/bin/google-cloud-sdk/path.bash.inc" ] && . "$HOME/bin/google-cloud-sdk/path.bash.inc"
@@ -196,7 +209,11 @@ fi
 # OrbStack
 # source ~/.orbstack/shell/init.bash 2>/dev/null || :
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 debug_msg "leaving .bashrc"
 # vim: set filetype=sh:
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
