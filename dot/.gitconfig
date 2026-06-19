@@ -36,3 +36,8 @@
 	required = true
 [init]
 	defaultBranch = main
+[blame]
+  coloring = highlightRecent
+[pager]
+  blame = delta
+  diff = delta

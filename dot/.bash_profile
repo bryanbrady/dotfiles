@@ -12,9 +12,9 @@ if [ -f $HOME/.bashrc ]; then
   . $HOME/.bashrc
 fi
 
-debug_msg "leaving .bash_profile"
-# vim: set filetype=sh:
-
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/bryan/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+debug_msg "leaving .bash_profile"
+# vim: set filetype=sh:

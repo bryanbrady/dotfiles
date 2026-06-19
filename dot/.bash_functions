@@ -4,7 +4,8 @@ debug_msg "entering .bash_functions"
 # Find                                                                         #
 ################################################################################
 ff  () { find . -type f -name "$@" ;}
-fd  () { find . -type d -name "$@" ;}
+# Commenting this out now that `fd` is a legit tool
+#fd  () { find . -type d -name "$@" ;}
 fff () { find . -type f ;}
 ffd () { find . -type d -name '*'"$@"'*';}
 ffa () { find . -name '*'"$@"'*' ;}
