@@ -50,9 +50,17 @@ link-ghci-conf () {
   ln -sfn ${THIS_DIR}/haskell/ghci.conf ${HOME}/.ghc/ghci.conf
 }
 
+configure-glab () {
+  command -v glab >/dev/null || return 0
+  # `browse <path>`: open the given file in GitLab on the current branch,
+  # resolving the path relative to the repo root (not the cwd).
+  glab alias set browse '!f() { open "$(glab repo view -F json | jq -r .web_url)/-/blob/$(git branch --show-current)/$(git rev-parse --show-prefix)$1"; }; f' >/dev/null
+}
+
 
 backup-dotfiles
 link-dotfiles
+configure-glab
 
 if [[ $(uname) == 'Darwin' ]]; then
   update-karabiner

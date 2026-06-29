@@ -148,17 +148,6 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 ################################################################################
-# fzf
-################################################################################
-# Use pushd instead of cd
-# __fzf_cd__() {
-#   local cmd dir
-#   cmd="${FZF_ALT_C_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
-#     -o -type d -print 2> /dev/null | cut -b3-"}"
-#   dir=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m) && printf 'pushd %q > /dev/null' "$dir"
-# }
-
-################################################################################
 # go
 ################################################################################
 export GOROOT=/usr/local/go
@@ -194,7 +183,6 @@ fi
 if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --bash)"
 fi
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -206,8 +194,10 @@ fi
 # Haskell
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
-# OrbStack
-# source ~/.orbstack/shell/init.bash 2>/dev/null || :
+################################################################################
+# Claude
+################################################################################
+export ENABLE_LSP_TOOL=1
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -215,5 +205,3 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 debug_msg "leaving .bashrc"
 # vim: set filetype=sh:
-
-

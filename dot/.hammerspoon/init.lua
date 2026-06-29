@@ -153,6 +153,32 @@ end
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "return", arrangeWindows)
 
+-- ---------------------------------------------------------------------------
+-- Throw focused window to the laptop screen + maximize
+-- The built-in Retina display shares one UUID across profiles, so resolve it
+-- via the active profile (falls back to the literal UUID if no profile matches).
+-- ---------------------------------------------------------------------------
+local LAPTOP_UUID = "37D8832A-2D66-02CA-B9F7-8F30A301B230" -- Built-in Retina
+
+local function maximizeOnLaptop()
+  local w = hs.window.focusedWindow()
+  if not w then
+    hs.alert.show("No focused window")
+    return
+  end
+  local profile = activeProfile()
+  local uuid = (profile and profile.screens.LAPTOP) or LAPTOP_UUID
+  local scr = hs.screen.find(uuid)
+  if not scr then
+    hs.alert.show("Laptop screen not found")
+    return
+  end
+  w:moveToScreen(scr)
+  w:setFrame(scr:frame(), 0)  -- fill usable area; 0 = no animation
+end
+
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "L", maximizeOnLaptop)
+
 local loaded = activeProfile()
 hs.alert.show("Hammerspoon config loaded [" ..
   (loaded and loaded.name or "no profile") .. "]")
