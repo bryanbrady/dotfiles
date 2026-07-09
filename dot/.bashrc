@@ -194,6 +194,25 @@ fi
 # Haskell
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
+__fzf_cd__() {
+  local dir
+  dir=$(
+    FZF_DEFAULT_COMMAND=${FZF_ALT_C_COMMAND:-} \
+    FZF_DEFAULT_OPTS="--reverse --walker=dir,follow,hidden --scheme=path ${FZF_ALT_C_OPTS-} +m" \
+    fzf < /dev/tty
+  ) && printf 'z -- %q' "$dir"
+}
+
+################################################################################
+# zoxide
+################################################################################
+eval "$(zoxide init bash)"
+export _ZO_FZF_OPTS="
+  --height 50% --layout reverse --info inline
+  --exit-0 --select-1
+  --preview 'eza -la --color=always --group-directories-first {2..}'
+  --preview-window right,50%,border-left"
+
 ################################################################################
 # Claude
 ################################################################################

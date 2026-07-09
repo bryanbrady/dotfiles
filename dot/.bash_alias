@@ -132,6 +132,7 @@ if [[ $BB_OS == 'mac' ]]; then
     alias getappid="/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier'"
     alias lockscreen="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
     alias ss="open -a ScreenSaverEngine.app"
+    alias zl="zoxide query --list"
 
 fi
 # defaults write -g NSNavPanelExpandedStateForSaveMode -bool YES
