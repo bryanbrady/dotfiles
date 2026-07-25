@@ -68,6 +68,9 @@ alias ffl="find -L . -type f -print0 | xargs -0 ag"
 # iTerm
 alias ireset="printf '\e]50;ClearScrollback\a'"
 
+# Modern versions of old tools
+alias bat=batcat
+alias fd=fdfind
 
 ################################################################################
 # Git                                                                          #
