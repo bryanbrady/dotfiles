@@ -133,10 +133,20 @@ fi
 ################################################################################
 # SSH
 ################################################################################
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent -s)" > /dev/null
-    echo "SSH Agent started..."
-    ssh-add ~/.ssh/id_ed25519
+if [ "$BB_OS" = "mac" ]; then
+    # launchd provides the agent + SSH_AUTH_SOCK; key comes from the Keychain
+    ssh-add -l >/dev/null 2>&1 || ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+else
+    # Fixed socket path so every terminal shares one agent
+    export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-$HOME/.ssh}/ssh-agent.sock"
+    ssh-add -l >/dev/null 2>&1
+    case $? in
+        1)  ssh-add ~/.ssh/id_ed25519 ;;            # agent live, no keys
+        2)  rm -f "$SSH_AUTH_SOCK"                  # no agent reachable
+            ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+            echo "SSH Agent started..."
+            ssh-add ~/.ssh/id_ed25519 ;;
+    esac
 fi
 
 ################################################################################
