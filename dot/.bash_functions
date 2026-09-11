@@ -141,6 +141,12 @@ d ()
   done
 }
 
+# Jump to a frecent zoxide directory and push the current one onto the stack
+zz() {
+    local target
+    target=$(zoxide query "$@") && pushd "$target"
+}
+
 # set title to first argument, if null, use $PWD
 settitle ()
 {

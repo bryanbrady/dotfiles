@@ -216,6 +216,11 @@ export _ZO_FZF_OPTS="
   --preview-window right,50%,border-left"
 
 ################################################################################
+# worktrunk
+################################################################################
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi
+
+################################################################################
 # Claude
 ################################################################################
 export ENABLE_LSP_TOOL=1
@@ -226,3 +231,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 debug_msg "leaving .bashrc"
 # vim: set filetype=sh:
+

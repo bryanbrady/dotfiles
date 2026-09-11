@@ -70,7 +70,6 @@ alias ireset="printf '\e]50;ClearScrollback\a'"
 
 # Modern versions of old tools
 alias bat=batcat
-alias fd=fdfind
 
 ################################################################################
 # Git                                                                          #
