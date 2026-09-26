@@ -208,12 +208,14 @@ __fzf_cd__() {
 ################################################################################
 # zoxide
 ################################################################################
-eval "$(zoxide init bash)"
-export _ZO_FZF_OPTS="
-  --height 50% --layout reverse --info inline
-  --exit-0 --select-1
-  --preview 'eza -la --color=always --group-directories-first {2..}'
-  --preview-window right,50%,border-left"
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash)"
+  export _ZO_FZF_OPTS="
+    --height 50% --layout reverse --info inline
+    --exit-0 --select-1
+    --preview 'eza -la --color=always --group-directories-first {2..}'
+    --preview-window right,50%,border-left"
+fi
 
 ################################################################################
 # worktrunk
